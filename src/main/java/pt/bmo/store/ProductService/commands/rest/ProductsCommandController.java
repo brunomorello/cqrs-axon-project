@@ -1,5 +1,6 @@
 package pt.bmo.store.ProductService.commands.rest;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.core.env.Environment;
@@ -25,7 +26,7 @@ public class ProductsCommandController {
     private final CommandGateway commandGateway;
 
     @PostMapping
-    public ResponseEntity create(@RequestBody CreateProductDto createProductDto) {
+    public ResponseEntity create(@Valid @RequestBody CreateProductDto createProductDto) {
         CreateProductCommand createProductCommand = CreateProductCommand.builder()
                 .price(createProductDto.price())
                 .title(createProductDto.title())

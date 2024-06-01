@@ -4,24 +4,25 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 @Data
 @Entity
-@Table(name = "PRODUCTS")
-public class ProductEntity implements Serializable {
+@Table(name = "PRODUCT_LOOKUP")
+@NoArgsConstructor
+@AllArgsConstructor
+public class ProductLookupEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(unique = true)
     private String productId;
 
     @Column(unique = true)
     private String title;
-    private BigDecimal price;
-    private Integer quantity;
 }
