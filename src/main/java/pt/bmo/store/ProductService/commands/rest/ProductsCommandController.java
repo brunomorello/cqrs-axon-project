@@ -34,12 +34,7 @@ public class ProductsCommandController {
                 .productId(UUID.randomUUID().toString())
                 .build();
 
-        String returnVal;
-        try {
-             returnVal = commandGateway.sendAndWait(createProductCommand);
-        } catch (Exception ex) {
-            returnVal = ex.getLocalizedMessage();
-        }
+        final String returnVal = commandGateway.sendAndWait(createProductCommand);
 
         return ResponseEntity.ok().body("ok " + env.getProperty("local.server.port") + " result: " + returnVal);
     }

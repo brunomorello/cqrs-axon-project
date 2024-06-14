@@ -22,7 +22,7 @@ public class ProductAggregate {
     public ProductAggregate() { }
 
     @CommandHandler
-    public ProductAggregate(CreateProductCommand createProductCommand) {
+    public ProductAggregate(CreateProductCommand createProductCommand) throws Exception {
         // Validate CreateProductCommand
         if (createProductCommand.getPrice().compareTo(BigDecimal.ZERO) <= 0) {
             throw new IllegalArgumentException("Price cannot be less or equal than zero");
@@ -31,6 +31,8 @@ public class ProductAggregate {
         if (createProductCommand.getTitle() == null || createProductCommand.getTitle().isBlank()) {
             throw new IllegalArgumentException("Title cannot be null or blank");
         }
+//          Testing Error Handler
+//        if (true) throw new Exception("random exception");
 
         ProductCreatedEvent productCreatedEvent = new ProductCreatedEvent();
 
